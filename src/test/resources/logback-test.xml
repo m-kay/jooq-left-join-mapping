@@ -1,0 +1,4 @@
+<!-- prevent debug-logging of MySqlTestExecutionListener (many debug-logs while polling testcontainer) -->
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>
+</configuration>
