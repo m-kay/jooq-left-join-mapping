@@ -35,7 +35,7 @@ class ObjcetService(private val jooqDsl: DSLContext) {
                         METADATA.METADATA_ID,
                         METADATA.DESCRIPTION,
                         METADATA.COMMENT,
-                    ).mapping { id, desc, comment -> if(id != null) MetadataDto(id, desc!!, comment) else null}.`as`("METADATA")
+                    ).mapping(::MetadataDto).`as`("METADATA")
                 )
                 .from(
                     OBJECTS.leftJoin(METADATA)
@@ -58,7 +58,7 @@ data class ObjectDto(
 )
 
 data class MetadataDto(
-    val metadataId: String,
-    val description: String,
+    val metadataId: String?,
+    val description: String?,
     val comment: String? = null
 )

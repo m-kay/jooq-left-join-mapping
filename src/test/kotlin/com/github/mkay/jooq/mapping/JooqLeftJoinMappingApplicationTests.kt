@@ -59,8 +59,10 @@ class JooqLeftJoinMappingApplicationTests {
             val objects = objectService.readObjects(listOf("obj-1", "obj-2"))
 
             assertThat(objects).hasSize(2)
-            assertThat(objects[1].objectId).isEqualTo("obj-1")
-            assertThat(objects[1].metadata).isNotNull//should be mapped but is not
+            assertThat(objects[0].objectId).isEqualTo("obj-1")
+            assertThat(objects[0].metadata).isNotNull //should be mapped but is null
+            assertThat(objects[1].objectId).isEqualTo("obj-2")
+            assertThat(objects[1].metadata).isNotNull//should be null because there is no metadata
         }
 
     }
